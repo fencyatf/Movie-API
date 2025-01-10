@@ -56,10 +56,11 @@ router.patch('/:id',(req,res)=>{
         }
         const {title, genre, releaseYear, rating} = req.body
 
-        movie.title = title
-        movie.genre = genre
-        movie.releaseYear = releaseYear
-        movie.rating = rating
+        if (title) movie.title = title
+        if (genre) movie.genre = genre
+        if (releaseYear) movie.releaseYear = releaseYear
+        if (rating) movie.rating = rating
+
 
         res.status(200).json({ message: 'Movie updated successfully', data: movie });
   } catch (error) {
